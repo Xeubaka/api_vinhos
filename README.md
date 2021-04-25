@@ -22,8 +22,8 @@
 
 ## Api :shipit:
 Rotas:
-    - GET [:id]
-        - Retorna todos registros, caso informe o [:id] irá retornar o registro com esse [:id]
+    - GET :id
+        - Retorna todos registros, caso informe o :id irá retornar o registro com esse :id
     - POST 
         - Insere novos registros na tabela, necessário informar os campos:
             |Campo|Tipo|Exemplo|
