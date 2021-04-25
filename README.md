@@ -22,7 +22,7 @@
        - Insere novos registros na tabela, necessário informar os campos:
             |Campo|Tipo|Exemplo|
             |:------:|:-----------:|:---------:|
-            |name|Varchar(24)|Piriquita|
+            |name|Varchar(24)|Periquita|
             |type|Varchar(10)|Tinto|
             |weight|Decimal|1.200|
    - PUT (api_vinhos/vinhos/atualizar/id)
