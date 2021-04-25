@@ -41,5 +41,5 @@
    - NO_EXIST 
         - Links que não tem função retornam: ``` { "tipo":"erro","resposta":"Recurso inexistente!" } ```
 
-## Gratidão
+## Gratidão 🙏
 ![programando](https://i0.wp.com/terminaldeinformacao.com/wp-content/uploads/2020/05/it_crowd.gif?resize=500%2C272&ssl=1)
