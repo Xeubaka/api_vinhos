@@ -19,7 +19,7 @@
     - Para criar o Banco de dados basta importar o arquivo *script_banco.sql*
 ```
 
-## :shipit: Api :shipit:
+## Api :shipit:
 ```
 Rotas:
     - GET [:id]
