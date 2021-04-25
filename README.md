@@ -1,7 +1,7 @@
 ## Ambiente
-  - Servidor Local: [Xampp 8.0.3](https://www.apachefriends.org/pt_br/download.html)
+  - Servidor Local: [Xampp 8.0.3](https://www.apachefriends.org/pt_br/download.html)🔗
 
-## RewriteEngine
+## RewriteEngine :
    - abrir arquivo "HTTPD.conf" do Apache 
         ```
           C:\xampp\apache\conf\httpd.conf
@@ -16,22 +16,22 @@
         {"tipo":"erro","resposta":"Recurso inexistente!"}
         ```
 
-## Banco de Dados
+## Banco de Dados 🏦
    - Para criar o Banco de dados basta importar o arquivo 
         ``` script_banco.sql ```
 
-## Api :shipit:
-   - GET :id
-       - Retorna todos registros, caso informe o :id irá retornar o registro com esse :id
-   - POST 
+## Api 👾
+   - GET (api_vinhos/vinhos/?id)
+       - Retorna todos registros, caso informe o **id** irá retornar o registro com esse **id**
+   - POST (api_vinhos/vinhos/cadastrar)
        - Insere novos registros na tabela, necessário informar os campos:
             |Campo|Tipo|Exemplo|
             |:------:|:-----------:|:---------:|
             |name|Varchar(24)|Piriquita|
             |type|Varchar(10)|Tinto|
             |weight|Decimal|1.200|
-   - PUT
+   - PUT (api_vinhos/vinhos/atualizar/id)
         - Atualiza registro, :id obrigatório
         - Atualiza somente os campos informados, não sendo necessário informar todos campos
-   - DELETE
+   - DELETE (api_vinhos/vinhos/deletar/id)
         - Delete registro por :id
