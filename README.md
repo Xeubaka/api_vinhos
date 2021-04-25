@@ -16,7 +16,7 @@
         ``` script_banco.sql ```
 
 ## Api 👾
-   - GET (api_vinhos/vinhos/:id)
+   - GET (api_vinhos/vinhos/listar/:id)
        - Retorna todos registros, caso informe o :id irá retornar o registro com esse :id
    - POST (api_vinhos/vinhos/cadastrar)
        - Insere novos registros na tabela, necessário informar todos os campos:
