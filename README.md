@@ -28,9 +28,9 @@
        - Json:
           ```
          {
-            "name": "Teste12",
-            "weight": 1.500,
-            "type": "tipo3"
+            "name": "Periquita",
+            "type": "Tinto",
+            "weight": 1.200
           }
           ```
    - PUT (api_vinhos/vinhos/atualizar/id)
