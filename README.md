@@ -18,7 +18,7 @@
 ## Api 👾
    - GET (api_vinhos/vinhos/:id)
        - Retorna todos registros, caso informe o :id irá retornar o registro com esse :id
-   - POST (api_vinhos/vinhos/cadastrar)
+   - POST (api_vinhos/vinhos/cadastrar) [JSON]
        - Insere novos registros na tabela, necessário informar os campos:
             |Campo|Tipo|Exemplo|
             |:------:|:-----------:|:---------:|
