@@ -11,7 +11,7 @@
    - reiniciar o Apache
    - para verificar se funcionou entrar com uma url aleatoria, deve retornar um JSON com mensagem: ``` { "tipo":"erro","resposta":"Recurso inexistente!" } ```
 
-## Banco de Dados 🏦
+## Banco de Dados 🎲
    - Para criar o Banco de dados basta importar o arquivo 
         ``` script_banco.sql ```
 
