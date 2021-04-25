@@ -20,7 +20,7 @@
 ```
 
 ## Api :shipit:
----
+
 Rotas:
     - GET [:id]
         - Retorna todos registros, caso informe o [:id] irá retornar o registro com esse [:id]
@@ -36,4 +36,4 @@ Rotas:
         - Atualiza somente os campos informados, não sendo necessário informar todos campos
     - DELETE
         - Delete registro por [:id]
-----
+
