@@ -18,13 +18,21 @@
 ## Api 👾
    - GET (api_vinhos/vinhos/:id)
        - Retorna todos registros, caso informe o :id irá retornar o registro com esse :id
-   - POST (api_vinhos/vinhos/cadastrar) [JSON]
+   - POST (api_vinhos/vinhos/cadastrar)
        - Insere novos registros na tabela, necessário informar os campos:
             |Campo|Tipo|Exemplo|
             |:------:|:-----------:|:---------:|
             |name|Varchar(24)|Periquita|
             |type|Varchar(10)|Tinto|
             |weight|Decimal|1.200|
+       - Json:
+          ```
+         {
+            "name": "Teste12",
+            "weight": 1.500,
+            "type": "tipo3"
+          }
+          ```
    - PUT (api_vinhos/vinhos/atualizar/id)
         - Atualiza registro, :id obrigatório
         - Atualiza somente os campos informados, não sendo necessário informar todos campos
