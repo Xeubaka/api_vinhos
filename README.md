@@ -9,7 +9,8 @@
    - descomentar a linha "LoadModule rewrite_module modules/mod_rewrite.so" (remover o '#')
    - Alterar "AllowOverride none" para "AllowOverride All"
    - reiniciar o Apache
-   - para verificar se funcionou entrar com uma url aleatoria (ex: *http://localhost/api_vinhos/aaaa*), deve retornar um JSON com mensagem: ``` { "tipo":"erro","resposta":"Recurso inexistente!" } ```
+   - para verificar se funcionou entrar com uma url aleatoria (ex: *http://localhost/api_vinhos/aaaa*), 
+deve retornar um JSON com mensagem: ``` { "tipo":"erro","resposta":"Recurso inexistente!" } ```
 
 ## Banco de Dados 🏦
    - Para criar o Banco de dados basta importar o arquivo 
