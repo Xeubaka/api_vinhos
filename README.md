@@ -10,11 +10,6 @@
    - Alterar "AllowOverride none" para "AllowOverride All"
    - reiniciar o Apache
    - para verificar se funcionou entrar com uma url aleatoria (ex: *http://localhost/api/aaaa*)
-    
-   * A api tem um retorno em json de erro: 
-        ```
-        {"tipo":"erro","resposta":"Recurso inexistente!"}
-        ```
 
 ## Banco de Dados 🏦
    - Para criar o Banco de dados basta importar o arquivo 
@@ -35,3 +30,5 @@
         - Atualiza somente os campos informados, não sendo necessário informar todos campos
    - DELETE (api_vinhos/vinhos/deletar/id)
         - Delete registro por :id
+   - NO_EXIST 
+        - Links que não tem função retornam: ``` "tipo":"erro","resposta":"Recurso inexistente!"} ```
