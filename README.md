@@ -1,7 +1,7 @@
-## Ambiente
+## Ambiente 💻
   - Servidor Local: [Xampp 8.0.3](https://www.apachefriends.org/pt_br/download.html)🔗
 
-## RewriteEngine :
+## RewriteEngine 🔧
    - abrir arquivo "HTTPD.conf" do Apache 
         ```
           C:\xampp\apache\conf\httpd.conf
@@ -21,8 +21,8 @@
         ``` script_banco.sql ```
 
 ## Api 👾
-   - GET (api_vinhos/vinhos/?id)
-       - Retorna todos registros, caso informe o **id** irá retornar o registro com esse **id**
+   - GET (api_vinhos/vinhos/:id)
+       - Retorna todos registros, caso informe o :id irá retornar o registro com esse :id
    - POST (api_vinhos/vinhos/cadastrar)
        - Insere novos registros na tabela, necessário informar os campos:
             |Campo|Tipo|Exemplo|
