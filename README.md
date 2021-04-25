@@ -27,7 +27,7 @@ Rotas:
     - POST 
         - Insere novos registros na tabela, necessário informar os campos:
             | Campo  | Tipo        | Exemplo   |
-            | :---:  | :---:       | :---:     |
+            | --- | --- | --- |
             | name   | Varchar(24) | Piriquita |
             | type   | Varchar(10) | Tinto     |
             | weight | Decimal     | 1.200     |
