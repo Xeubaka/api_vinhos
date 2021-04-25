@@ -21,18 +21,17 @@
         ``` script_banco.sql ```
 
 ## Api :shipit:
-Rotas:
-    - GET :id
-        - Retorna todos registros, caso informe o :id irá retornar o registro com esse :id
-    - POST 
-        - Insere novos registros na tabela, necessário informar os campos:
+   - GET :id
+       - Retorna todos registros, caso informe o :id irá retornar o registro com esse :id
+   - POST 
+       - Insere novos registros na tabela, necessário informar os campos:
             |Campo|Tipo|Exemplo|
             |:------:|:-----------:|:---------:|
             |name|Varchar(24)|Piriquita|
             |type|Varchar(10)|Tinto|
             |weight|Decimal|1.200|
-    - PUT
-        - Atualiza registro, [:id] obrigatório
+   - PUT
+        - Atualiza registro, :id obrigatório
         - Atualiza somente os campos informados, não sendo necessário informar todos campos
-    - DELETE
-        - Delete registro por [:id]
+   - DELETE
+        - Delete registro por :id
