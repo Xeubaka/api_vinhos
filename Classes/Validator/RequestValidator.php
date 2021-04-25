@@ -4,7 +4,6 @@ namespace Validator;
 
 use InvalidArgumentException;
 use Service\VinhosService;
-use Service\DebugService;
 use Util\ConstantesGenericasUtil;
 use Util\JsonUtil;
 
@@ -60,8 +59,6 @@ Class RequestValidator
     private function get()
     {
         $retorno = utf8_encode(ConstantesGenericasUtil::MSG_ERRO_TIPO_ROTA);
-        $DebugService = new DebugService;
-        $DebugService->console_log($this->request);
         if (in_array($this->request['metodo'], ConstantesGenericasUtil::TIPO_GET, true)){
             switch ($this->request['rota']){
                 case self::VINHOS: 

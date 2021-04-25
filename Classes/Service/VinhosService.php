@@ -123,7 +123,7 @@ class VinhosService
 
         if($name && $type && $weight){
             
-            if ($this->VinhosRepository->InsertVinho($name, $type, $weight) > 0){
+            if ($this->VinhosRepository->InsertVinho($this->dadosCorpoRequest) > 0){
                 $idInserido = $this->VinhosRepository->getMySQL()->getDb()->lastInsertId();
                 $this->VinhosRepository->getMySQL()->getDb()->commit();
                 return ['id_inserido' => $idInserido];
@@ -138,12 +138,17 @@ class VinhosService
 
     private function deletar()
     {
-        return $this->VinhosRepository->getMySQL()->delete(self::TABELA, $this->dados['id']);
+        if ($this->VinhosRepository->deleteVinho($this->dados['id']) > 0){
+            $this->VinhosRepository->getMySQL()->getDb()->commit();
+            return ConstantesGenericasUtil::MSG_DELETADO_SUCESSO;
+        }
+        $this->VinhosRepository->getMySQL()->getDb()->rollBack();
+        throw new InvalidArgumentException(ConstantesGenericasUtil::MSG_ERRO_NAO_AFETADO);
     }
 
     private function atualizar()
     {
-        if ($this->VinhosRepository->updateUser($this->dados['id'], $this->dadosCorpoRequest) > 0){
+        if ($this->VinhosRepository->updateVinho($this->dados['id'], $this->dadosCorpoRequest) > 0){
             $this->VinhosRepository->getMySQL()->getDb()->commit();
             return ConstantesGenericasUtil::MSG_ATUALIZADO_SUCESSO;
         }
