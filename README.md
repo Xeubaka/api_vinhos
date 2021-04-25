@@ -1,23 +1,25 @@
-##Ambiente
+## Ambiente
 ```
     - Servidor Local: Xampp 8.0.3 (*https://www.apachefriends.org/pt_br/download.html*)
 ```
 
-##RewriteEngine
+## RewriteEngine
 ```
     - abrir arquivo "HTTPD.conf" do Apache (*C:\xampp\apache\conf\httpd.conf*)
     - descomentar a linha "LoadModule rewrite_module modules/mod_rewrite.so" (remover o '#')
     - Alterar "AllowOverride none" para "AllowOverride All"
     - reiniciar o Apache
-    - para verificar se funcionou entrar com uma url aleatoria (ex: *http://localhost/api/aaaa*), a api tem um retorno em json de erro: {"tipo":"erro","resposta":"Recurso inexistente!"}
+    - para verificar se funcionou entrar com uma url aleatoria (ex: *http://localhost/api/aaaa*)
+    
+    * A api tem um retorno em json de erro: {"tipo":"erro","resposta":"Recurso inexistente!"}
 ```
 
-##Banco de Dados
+## Banco de Dados
 ```
     - Para criar o Banco de dados basta importar o arquivo *script_banco.sql*
 ```
 
-##Api :shipit:
+## :shipit: Api :shipit:
 ```
 Rotas:
     - GET [:id]
