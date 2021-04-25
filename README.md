@@ -31,4 +31,4 @@
    - DELETE (api_vinhos/vinhos/deletar/id)
         - Delete registro por :id
    - NO_EXIST 
-        - Links que não tem função retornam: ``` "tipo":"erro","resposta":"Recurso inexistente!"} ```
+        - Links que não tem função retornam: ``` { "tipo":"erro","resposta":"Recurso inexistente!" } ```
