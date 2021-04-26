@@ -1,21 +1,5 @@
 <?php
-/**
- * PHP version 7.4
- * Autoload
- * Auto load all classes
- *
- * @category AutoLoad
- * @package  Initial
- * @author   Luis Roberto <lrs.juca@gmail.com>
- * @license  Open Source https://opensource.org/docs/osd
- * @link     https://github.com/Xeubaka/api_vinhos/
- */
-
-/**
- * Define ini_set().
- *
- * @return
- */
+// phpcs:disable PEAR.Commenting
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ERROR);

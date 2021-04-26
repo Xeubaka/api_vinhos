@@ -1,5 +1,6 @@
 <?php
-
+// phpcs:disable PEAR.Commenting
+// phpcs:disable Generic.Files.LineLength.TooLong
 namespace Util;
 
 abstract class ConstantGenericalUtil

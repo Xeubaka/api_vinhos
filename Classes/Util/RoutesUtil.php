@@ -1,6 +1,5 @@
 <?php
-
-
+// phpcs:disable PEAR.Commenting
 namespace Util;
 
 class RoutesUtil

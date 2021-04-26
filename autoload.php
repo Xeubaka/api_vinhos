@@ -1,23 +1,5 @@
 <?php
-/**
- * PHP version 7.4
- * Autoload
- * Auto load all classes
- *
- * @category AutoLoad
- * @package  Initial
- * @author   Luis Roberto <lrs.juca@gmail.com>
- * @license  Open Source https://opensource.org/docs/osd
- * @link     https://github.com/Xeubaka/api_vinhos/
- */
-
-/**
- * Define autoload().
- *
- * @param string $class All files in classes
- *
- * @return "incluse $class " will include of all classes
- */
+// @codingStandardsIgnoreStart PEAR.Commenting.FileComment
 function autoload($class)
 {
     $base_dir  = DIR_APP . DS;

@@ -1,5 +1,6 @@
 <?php
-
+// phpcs:disable PEAR.Commenting
+// phpcs:disable Generic.Files.LineLength.TooLong
 namespace Service;
 
 use InvalidArgumentException;
@@ -15,29 +16,29 @@ class WinesService
     public const RESOURCE_DELETE = ['delete'];
     public const RESOURCE_PUT = ['update'];
 
-    private array $data;
-    private array $dataRequestBody;
+    private array $_data;
+    private array $_dataRequestBody;
 
-    private object $WinesRepository;
+    private object $_WinesRepository;
 
     public function __construct($data = [])
     {
-        $this->data = $data;
-        $this->WinesRepository = new WinesRepository();
+        $this->_data = $data;
+        $this->_WinesRepository = new WinesRepository();
     }
 
     public function validateGet()
     {
         $return = null;
-        $resource = $this->data['resource'];
-        if(in_array($resource, self::RESOURCE_GET, true)) {
-            $return = $this->data['id'] > 0 ? $this->getOneByKey() : $this->$resource();
+        if (in_array($this->_data['resource'], self::RESOURCE_GET, true)) {
+            $resource = '_' . $this->_data['resource'];
+            $return = $this->_data['id'] > 0 ? $this->_getOneByKey() : $this->$resource();
         } else {
             throw new InvalidArgumentException(ConstantGenericalUtil::MSG_ERRO_RESOURCE_UNAVAILABLE);
         }
 
-        if ($return === null){
-            throw new InvalidArgumentException(ConstantGenericalUtil::MSG_ERRO_GENERICO);
+        if ($return === null) {
+            throw new InvalidArgumentException(ConstantGenericalUtil::MSG_ERRO_GENERIC);
         }
 
         return $return;
@@ -46,19 +47,19 @@ class WinesService
     public function validateDelete()
     {
         $return = null;
-        $resource = $this->data['resource'];
-        if(in_array($resource, self::RESOURCE_DELETE, true)){
-            if($this->data['id']>0){
+        if (in_array($this->_data['resource'], self::RESOURCE_DELETE, true) ) {
+            $resource = '_' . $this->_data['resource'];
+            if ($this->_data['id'] > 0 ) {
                 $return = $this->$resource();
-            }else{
+            } else {
                 throw new InvalidArgumentException(ConstantGenericalUtil::MSG_ERRO_MUST_HAVE_ID);
             }
         } else {
-            throw new InvalidArgumentException(ConstantGenericalUtil::MSG_ERRO_GENERICO);
+            throw new InvalidArgumentException(ConstantGenericalUtil::MSG_ERRO_GENERIC);
         }
 
-        if($return === null) {
-            throw new InvalidArgumentException(ConstantGenericalUtil::MSG_ERRO_GENERICO);
+        if ($return === null) {
+            throw new InvalidArgumentException(ConstantGenericalUtil::MSG_ERRO_GENERIC);
         }
 
         return $return;
@@ -67,15 +68,15 @@ class WinesService
     public function validatePost()
     {
         $return = null;
-        $resource = $this->data['resource'];
-        if (in_array($resource, self::RESOURCE_POST, true)) {
+        if (in_array($this->_data['resource'], self::RESOURCE_POST, true)) {
+            $resource = '_' . $this->_data['resource'];
             $return = $this->$resource();
         } else {
             throw new InvalidArgumentException(ConstantGenericalUtil::MSG_ERRO_RESOURCE_UNAVAILABLE);
         }
 
         if ($return === null) {
-            throw new InvalidArgumentException(ConstantGenericalUtil::MSG_ERRO_GENERICO);
+            throw new InvalidArgumentException(ConstantGenericalUtil::MSG_ERRO_GENERIC);
         }
 
         return $return;
@@ -84,9 +85,9 @@ class WinesService
     public function validatePut()
     {
         $return = null;
-        $resource = $this->data['resource'];
-        if (in_array($resource, self::RESOURCE_PUT, true)) {
-            if ($this->data['id'] > 0) {
+        if (in_array($this->_data['resource'], self::RESOURCE_PUT, true)) {
+            $resource = '_' . $this->_data['resource'];
+            if ($this->_data['id'] > 0) {
                 $return = $this->$resource();
             } else {
                 throw new InvalidArgumentException(ConstantGenericalUtil::MSG_ERRO_MUST_HAVE_ID);
@@ -96,7 +97,7 @@ class WinesService
         }
 
         if ($return === null) {
-            throw new InvalidArgumentException(ConstantGenericalUtil::MSG_ERRO_GENERICO);
+            throw new InvalidArgumentException(ConstantGenericalUtil::MSG_ERRO_GENERIC);
         }
 
         return $return;
@@ -104,55 +105,55 @@ class WinesService
 
     public function setDataRequestBody($dataRequestBody)
     {
-        $this->dataRequestBody = $dataRequestBody;
+        $this->_dataRequestBody = $dataRequestBody;
     }
 
-    private function list()
+    private function _list()
     {
-        return $this->WinesRepository->getMySQL()->getAll(self::TABLE);
+        return $this->_WinesRepository->getMySQL()->getAll(self::TABLE);
     }
 
-    private function getOneByKey()
+    private function _getOneByKey()
     {
-        return $this->WinesRepository->getMySQL()->getOneByKey(self::TABLE, $this->data['id']);
+        return $this->_WinesRepository->getMySQL()->getOneByKey(self::TABLE, $this->_data['id']);
     }
 
-    private function insert()
+    private function _insert()
     {
-        [$name, $type, $weight] = [$this->dataRequestBody['name'], $this->dataRequestBody['type'], $this->dataRequestBody['weight']];
+        [$name, $type, $weight] = [$this->_dataRequestBody['name'], $this->_dataRequestBody['type'], $this->_dataRequestBody['weight']];
 
-        if($name && $type && $weight){
+        if ($name && $type && $weight) {
 
-            if ($this->WinesRepository->insertWine($this->dataRequestBody) > 0){
-                $idInserido = $this->WinesRepository->getMySQL()->getDb()->lastInsertId();
-                $this->WinesRepository->getMySQL()->getDb()->commit();
+            if ($this->_WinesRepository->insertWine($this->_dataRequestBody) > 0 ) {
+                $idInserido = $this->_WinesRepository->getMySQL()->getDb()->lastInsertId();
+                $this->_WinesRepository->getMySQL()->getDb()->commit();
                 return ['id_inserido' => $idInserido];
             }
 
-            $this->WinesRepository->getMySQL()->getDb()->rollBack();
+            $this->_WinesRepository->getMySQL()->getDb()->rollBack();
 
-            throw new InvalidArgumentException(ConstantGenericalUtil::MSG_ERRO_GENERICO);
+            throw new InvalidArgumentException(ConstantGenericalUtil::MSG_ERRO_GENERIC);
         }
         throw new InvalidArgumentException(ConstantGenericalUtil::MSG_ERRO_MISSING_INFORMATION);
     }
 
-    private function delete()
+    private function _delete()
     {
-        if ($this->WinesRepository->deleteWine($this->data['id']) > 0){
-            $this->WinesRepository->getMySQL()->getDb()->commit();
+        if ($this->_WinesRepository->deleteWine($this->_data['id']) > 0 ) {
+            $this->_WinesRepository->getMySQL()->getDb()->commit();
             return ConstantGenericalUtil::MSG_DELETED_SUCCESSFULLY;
         }
-        $this->WinesRepository->getMySQL()->getDb()->rollBack();
+        $this->_WinesRepository->getMySQL()->getDb()->rollBack();
         throw new InvalidArgumentException(ConstantGenericalUtil::MSG_ERRO_NONE_AFFAFFECTED);
     }
 
-    private function update()
+    private function _update()
     {
-        if ($this->WinesRepository->updateWine($this->data['id'], $this->dataRequestBody) > 0){
-            $this->WinesRepository->getMySQL()->getDb()->commit();
+        if ($this->_WinesRepository->updateWine($this->_data['id'], $this->_dataRequestBody) > 0 ) {
+            $this->_WinesRepository->getMySQL()->getDb()->commit();
             return ConstantGenericalUtil::MSG_UPDATED_SUCCESSFULLY;
         }
-        $this->WinesRepository->getMySQL()->getDb()->rollBack();
+        $this->_WinesRepository->getMySQL()->getDb()->rollBack();
         throw new InvalidArgumentException(ConstantGenericalUtil::MSG_ERRO_NONE_AFFAFFECTED);
     }
 }

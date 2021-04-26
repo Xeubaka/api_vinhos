@@ -1,5 +1,6 @@
 <?php
-
+// phpcs:disable PEAR.Commenting
+// phpcs:disable Generic.Files.LineLength.TooLong
 namespace DB;
 
 use InvalidArgumentException;
@@ -9,19 +10,17 @@ use Util\ConstantGenericalUtil;
 
 Class MySql
 {
-    private object $db;
+    private object $_db;
 
     public function __construct()
     {
-        $this->db = $this->setDB();
+        $this->_db = $this->setDB();
     }
 
     public function setDB()
     {
         try{
-            return new PDO (
-                'mysql:host=' . HOST . '; dbname='. DATA_BASE . ';', USER, PASSWORD
-            );
+            return new PDO('mysql:host=' . HOST . '; dbname='. DATA_BASE . ';', USER, PASSWORD);
         } catch (PDOException $exception){
             throw new PDOException($exception->getMessage());
         }
@@ -29,11 +28,11 @@ Class MySql
 
     public function getAll($table)
     {
-        if($table){
+        if ($table) {
             $query = 'SELECT * FROM '. $table;
-            $stmt = $this->db->query($query);
-            $results = $stmt->fetchAll($this->db::FETCH_ASSOC);
-            if (is_array($results) && count($results) > 0){
+            $stmt = $this->_db->query($query);
+            $results = $stmt->fetchAll($this->_db::FETCH_ASSOC);
+            if (is_array($results) && count($results) > 0) {
                 return $results;
             }
         }
@@ -43,14 +42,14 @@ Class MySql
 
     public function getOneByKey($table, $id)
     {
-        if ($table && $id){
+        if ($table && $id) {
             $query = 'SELECT * FROM ' . $table . ' WHERE id = :id';
-            $stmt = $this->db->prepare($query);
+            $stmt = $this->_db->prepare($query);
             $stmt->bindParam(':id', $id);
             $stmt->execute();
             $resultsCount = $stmt->rowCount();
-            if ($resultsCount === 1){
-                return $stmt->fetch($this->db::FETCH_ASSOC);
+            if ($resultsCount === 1) {
+                return $stmt->fetch($this->_db::FETCH_ASSOC);
             }
             throw new InvalidArgumentException(ConstantGenericalUtil::MSG_ERRO_RETURN_NONE);
         }
@@ -60,7 +59,7 @@ Class MySql
 
     public function getDb()
     {
-        return $this->db;
+        return $this->_db;
     }
 }
 

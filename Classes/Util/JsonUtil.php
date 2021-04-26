@@ -1,5 +1,6 @@
 <?php
-
+// phpcs:disable PEAR.Commenting
+// phpcs:disable Generic.Files.LineLength.TooLong
 namespace Util;
 
 use InvalidArgumentException;
@@ -12,15 +13,15 @@ class JsonUtil
         $data = [];
         $data[ConstantGenericalUtil::TYPE] = ConstantGenericalUtil::TYPE_ERROR;
 
-        if ((is_array($return) && count($return)>0) || strlen($return)>10){
+        if ((is_array($return) && count($return)>0) || strlen($return)>10 ) {
             $data[ConstantGenericalUtil::TYPE] = ConstantGenericalUtil::TYPE_SUCCESS;
             $data[ConstantGenericalUtil::ANSWER] = $return;
         }
 
-        $this->retornarJson($data);
+        $this->_retornarJson($data);
     }
 
-    private function retornarJson($json)
+    private function _retornarJson($json)
     {
         header('Content-type: application/json');
         header('Cache-Control: no-cache, no-store, must-revalidate');
@@ -37,7 +38,7 @@ class JsonUtil
             throw new  InvalidArgumentException(ConstantGenericalUtil::MSG_ERRO_EMPTY_JSON);
         }
 
-        if(is_array($postJson) && count($postJson)>0 ){
+        if (is_array($postJson) && count($postJson)>0 ) {
             return $postJson;
         }
     }
