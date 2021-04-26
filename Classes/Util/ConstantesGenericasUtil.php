@@ -39,7 +39,6 @@ abstract class ConstantesGenericasUtil
     const TIPO_ERRO = 'erro';
 
     /* OUTRAS */
-    public const DISTANCIA = 'KM';
     public const TIPO = 'tipo';
     public const RESPOSTA = 'resposta';
 

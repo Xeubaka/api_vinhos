@@ -27,20 +27,6 @@ Class MySql
         }
     }
 
-    public function delete($tabela, $id)
-    {
-        if($tabela){
-            $consulta = 'SELECT * FROM ' . $tabela;
-            $stmt = $this->db->query($consulta);
-            $registros = $stmt->fetchAll($this->db::FETCH_ASSOC);
-            if (is_array($registros) && count($registros) > 0){
-                return $registros;
-            }
-        }
-
-        throw new InvalidArgumentException(ConstantesGenericasUtil::MSG_ERRO_SEM_RETORNO);
-    }
-
     public function getAll($tabela)
     {
         if($tabela){
