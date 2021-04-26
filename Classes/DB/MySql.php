@@ -5,7 +5,7 @@ namespace DB;
 use InvalidArgumentException;
 use PDO;
 use PDOException;
-use Util\ConstantesGenericasUtil;
+use Util\ConstantGenericalUtil;
 
 Class MySql
 {
@@ -20,42 +20,42 @@ Class MySql
     {
         try{
             return new PDO (
-                'mysql:host=' . HOST . '; dbname='. BANCO . ';', USUARIO, SENHA
+                'mysql:host=' . HOST . '; dbname='. DATA_BASE . ';', USER, PASSWORD
             );
         } catch (PDOException $exception){
             throw new PDOException($exception->getMessage());
         }
     }
 
-    public function getAll($tabela)
+    public function getAll($table)
     {
-        if($tabela){
-            $consulta = 'SELECT * FROM '. $tabela;
-            $stmt = $this->db->query($consulta);
-            $registros = $stmt->fetchAll($this->db::FETCH_ASSOC);
-            if (is_array($registros) && count($registros) > 0){
-                return $registros;
+        if($table){
+            $query = 'SELECT * FROM '. $table;
+            $stmt = $this->db->query($query);
+            $results = $stmt->fetchAll($this->db::FETCH_ASSOC);
+            if (is_array($results) && count($results) > 0){
+                return $results;
             }
         }
 
-        throw new InvalidArgumentException(ConstantesGenericasUtil::MSG_ERRO_SEM_RETORNO);
+        throw new InvalidArgumentException(ConstantGenericalUtil::MSG_ERRO_RETURN_NONE);
     }
 
-    public function getOneByKey($tabela, $id)
+    public function getOneByKey($table, $id)
     {
-        if ($tabela && $id){
-            $consulta = 'SELECT * FROM ' . $tabela . ' WHERE id = :id';
-            $stmt = $this->db->prepare($consulta);
+        if ($table && $id){
+            $query = 'SELECT * FROM ' . $table . ' WHERE id = :id';
+            $stmt = $this->db->prepare($query);
             $stmt->bindParam(':id', $id);
             $stmt->execute();
-            $totalRegistros = $stmt->rowCount();
-            if ($totalRegistros === 1){
+            $resultsCount = $stmt->rowCount();
+            if ($resultsCount === 1){
                 return $stmt->fetch($this->db::FETCH_ASSOC);
             }
-            throw new InvalidArgumentException(ConstantesGenericasUtil::MSG_ERRO_SEM_RETORNO);
+            throw new InvalidArgumentException(ConstantGenericalUtil::MSG_ERRO_RETURN_NONE);
         }
 
-        throw new InvalidArgumentException(ConstantesGenericasUtil::MSG_ERRO_ID_OBRIGATORIO);
+        throw new InvalidArgumentException(ConstantGenericalUtil::MSG_ERRO_MUST_HAVE_ID);
     }
 
     public function getDb()

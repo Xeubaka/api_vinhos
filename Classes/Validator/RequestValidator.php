@@ -3,109 +3,109 @@
 namespace Validator;
 
 use InvalidArgumentException;
-use Service\VinhosService;
-use Util\ConstantesGenericasUtil;
+use Service\WinesService;
+use Util\ConstantGenericalUtil;
 use Util\JsonUtil;
 
 Class RequestValidator
 {
     private array $request;
-    private array $dadosRequest;
+    private array $requestData;
 
     const GET = 'GET';
     const DELETE = 'DELETE';
-    const VINHOS = 'VINHOS';
+    const WINES = 'WINES';
 
     public function __construct($request = [])
     {
-        $this->request = $request;        
+        $this->request = $request;
     }
 
-    public function processarRequest()
+    public function processRequest()
     {
-        $retorno = utf8_encode(ConstantesGenericasUtil::MSG_ERRO_TIPO_ROTA);
-        
-        if (in_array($this->request['metodo'], ConstantesGenericasUtil::TIPO_REQUEST, true)){
-            $retorno = $this->direcionarRequest();
+        $return = utf8_encode(ConstantGenericalUtil::MSG_ERRO_ROUTE_TYPE);
+
+        if (in_array($this->request['method'], ConstantGenericalUtil::TYPE_REQUEST, true)){
+            $return = $this->rerouteRequest();
         }
-        return $retorno;
+        return $return;
     }
 
-    private function direcionarRequest()
+    private function rerouteRequest()
     {
-        if ($this->request['metodo'] !== self::GET && $this->request['metodo'] !== self::DELETE){
-            $this->dadosRequest = JsonUtil::tratarCorpoRequisicaoJson();
+        if ($this->request['method'] !== self::GET && $this->request['method'] !== self::DELETE){
+            $this->requestData = JsonUtil::prepareRequestBodyJson();
         }
-        $metodo = $this->request['metodo'];
-        return $this->$metodo();
+        $method = $this->request['method'];
+        return $this->$method();
     }
 
     private function delete()
     {
-        $retorno = utf8_encode(ConstantesGenericasUtil::MSG_ERRO_TIPO_ROTA);
-        if (in_array($this->request['metodo'], ConstantesGenericasUtil::TIPO_DELETE, true)){
-            switch ($this->request['rota']){
-                case self::VINHOS:
-                    $VinhosService = new VinhosService($this->request);
-                    $retorno = $VinhosService->validarDelete();
+        $return = utf8_encode(ConstantGenericalUtil::MSG_ERRO_ROUTE_TYPE);
+        if (in_array($this->request['method'], ConstantGenericalUtil::DELETE_TYPE, true)){
+            switch ($this->request['route']){
+                case self::WINES:
+                    $WinesService = new WinesService($this->request);
+                    $return = $WinesService->validateDelete();
                     break;
                 default:
-                    throw new InvalidArgumentException(ConstantesGenericasUtil::MSG_ERRO_RECURSO_INEXISTENTE);
+                    throw new InvalidArgumentException(ConstantGenericalUtil::MSG_ERRO_RESOURCE_UNAVAILABLE);
             }
-            return $retorno;
+            return $return;
         }
     }
 
     private function get()
     {
-        $retorno = utf8_encode(ConstantesGenericasUtil::MSG_ERRO_TIPO_ROTA);
-        if (in_array($this->request['metodo'], ConstantesGenericasUtil::TIPO_GET, true)){
-            switch ($this->request['rota']){
-                case self::VINHOS: 
-                    $VinhosService = new VinhosService($this->request);
-                    $retorno = $VinhosService->validarGet();
+        $return = utf8_encode(ConstantGenericalUtil::MSG_ERRO_ROUTE_TYPE);
+        if (in_array($this->request['method'], ConstantGenericalUtil::GET_TYPE, true)){
+            switch ($this->request['route']){
+                case self::WINES:
+                    $WinesService = new WinesService($this->request);
+                    $return = $WinesService->validateGet();
                     break;
                 default:
-                    throw new InvalidArgumentException(ConstantesGenericasUtil::MSG_ERRO_RECURSO_INEXISTENTE);
+                    throw new InvalidArgumentException(ConstantGenericalUtil::MSG_ERRO_RESOURCE_UNAVAILABLE);
             }
         }
-        return $retorno;
+        return $return;
     }
 
     private function post()
     {
-        $retorno = null;
-        if (in_array($this->request['metodo'], ConstantesGenericasUtil::TIPO_POST, true)){
-            switch ($this->request['rota']){
-                case self::VINHOS:
-                    $VinhosService = new VinhosService($this->request);
-                    $VinhosService->setDadosCorpoRequest($this->dadosRequest);
-                    $retorno = $VinhosService->validarPost();
+        $return = null;
+        if (in_array($this->request['method'], ConstantGenericalUtil::POST_TYPE, true)){
+            switch ($this->request['route']){
+                case self::WINES:
+                    $WinesService = new WinesService($this->request);
+                    $WinesService->setDataRequestBody($this->requestData);
+                    $return = $WinesService->validatePost();
                     break;
                 default:
-                    throw new  InvalidArgumentException(ConstantesGenericasUtil::MSG_ERRO_TIPO_ROTA);
+                    throw new  InvalidArgumentException(ConstantGenericalUtil::MSG_ERRO_ROUTE_TYPE);
             }
-            return $retorno;
+            return $return;
         }
-        throw new InvalidArgumentException(ConstantesGenericasUtil::MSG_ERRO_TIPO_ROTA);
+        throw new InvalidArgumentException(ConstantGenericalUtil::MSG_ERRO_ROUTE_TYPE);
     }
 
     private function put()
     {
-        $retorno = null;
-        if (in_array($this->request['metodo'], ConstantesGenericasUtil::TIPO_PUT, true)) {
-            switch ($this->request['rota']) {
-                case self::VINHOS:
-                    $VinhosService = new VinhosService($this->request);
-                    $VinhosService->setDadosCorpoRequest($this->dadosRequest);
-                    $retorno = $VinhosService->validarPut();
+        $return = null;
+        if (in_array($this->request['method'], ConstantGenericalUtil::PUT_TYPE, true)) {
+            switch ($this->request['route']) {
+                case self::WINES:
+                    $WinesService = new WinesService($this->request);
+                    $WinesService->setDataRequestBody($this->requestData);
+                    $return = $WinesService->validatePut();
                     break;
                 default:
-                    throw new InvalidArgumentException(ConstantesGenericasUtil::MSG_ERRO_TIPO_ROTA);
+                    throw new InvalidArgumentException(ConstantGenericalUtil::MSG_ERRO_ROUTE_TYPE);
             }
-            return $retorno;
+            return $return;
         }
-        throw new InvalidArgumentException(ConstantesGenericasUtil::MSG_ERRO_TIPO_ROTA);
+        throw new InvalidArgumentException(ConstantGenericalUtil::MSG_ERRO_ROUTE_TYPE);
     }
 
 }

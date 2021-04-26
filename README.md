@@ -21,9 +21,9 @@
         ``` script_banco.sql ```
 
 ## Api 👾
-   - GET (api_vinhos/vinhos/listar/:id)
+   - GET (api_vinhos/wines/list/:id)
        - Retorna todos registros, caso informe o :id irá retornar o registro com esse :id
-   - POST (api_vinhos/vinhos/cadastrar)
+   - POST (api_vinhos/wines/insert)
        - Insere novos registros na tabela, necessário informar todos os campos:
             |Campo|Tipo|Exemplo|
             |:------:|:-----------:|:---------:|
@@ -38,10 +38,10 @@
             "weight": 1.200
           }
           ```
-   - PUT (api_vinhos/vinhos/atualizar/id)
+   - PUT (api_vinhos/wines/update/id)
         - Atualiza registro, :id obrigatório
         - Atualiza somente os campos informados, não sendo necessário informar todos campos
-   - DELETE (api_vinhos/vinhos/deletar/id)
+   - DELETE (api_vinhos/wines/delete/id)
         - Deleta registro por :id
    - NO_EXIST 
         - Links que não tem função retornam: ``` { "tipo":"erro","resposta":"Recurso inexistente!" } ```
