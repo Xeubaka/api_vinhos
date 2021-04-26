@@ -46,7 +46,7 @@
    - NO_EXIST 
         - Links que não tem função retornam: ``` { "tipo":"erro","resposta":"Recurso inexistente!" } ```
 
-## Minha experiência com esse estudo:
+## Minha experiência com esse estudo
 
 Desenvolver uma api em php, mesmo após certo tempo enferrujado com a linguagem, foi certamente uma experiência divertida, o que me fascina em programação é que não importa a linguagem, pois lógica sempre será uma constante, o divertido é ver como essa lógica é subvertida aos conceitos e parâmetros de cada linguagem, por fim, desenvolver não é sobre a linguagem utilizada, mas sim quais conceitos e parâmetros você se dispõe a utilizar.
 
