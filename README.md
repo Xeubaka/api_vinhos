@@ -3,18 +3,18 @@
 
 ## RewriteEngine 🔧
      
-  ### Explicaçao
-     - RewriteEngine, facilita a modelagem de URL’s, possibilitando gerenciar melhor as rotas da api (Config: .htaccess; Conceito: RequestValidator.php && RotasUtil.php)
+### Explicaçao
+   - RewriteEngine, facilita a modelagem de URL’s, possibilitando gerenciar melhor as rotas da api (Config: .htaccess; Conceito: RequestValidator.php && RotasUtil.php)
 
-  ### Configuração
-     - abrir arquivo "HTTPD.conf" do Apache 
+### Configuração
+   - abrir arquivo "HTTPD.conf" do Apache 
         ```
           C:\xampp\apache\conf\httpd.conf
         ```
-     - descomentar a linha "LoadModule rewrite_module modules/mod_rewrite.so" (remover o '#')
-     - Alterar "AllowOverride none" para "AllowOverride All"
-     - reiniciar o Apache
-     - para verificar se funcionou entrar com uma url aleatoria, deve retornar um JSON com mensagem: ``` { "tipo":"erro","resposta":"Recurso inexistente!" } ```
+   - descomentar a linha "LoadModule rewrite_module modules/mod_rewrite.so" (remover o '#')
+   - Alterar "AllowOverride none" para "AllowOverride All"
+   - reiniciar o Apache
+   - para verificar se funcionou entrar com uma url aleatoria, deve retornar um JSON com mensagem: ``` { "tipo":"erro","resposta":"Recurso inexistente!" } ```
 
 ## Banco de Dados 🎲
    - Para criar o Banco de dados basta importar o arquivo 
