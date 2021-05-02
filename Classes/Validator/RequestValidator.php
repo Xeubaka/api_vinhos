@@ -11,7 +11,7 @@ use Util\JsonUtil;
 Class RequestValidator
 {
     private array $_request;
-    private array $_requestData;
+    private array $_requestData = [];
 
     const GET = 'GET';
     const DELETE = 'DELETE';
