@@ -6,6 +6,8 @@ use Util\JsonUtil;
 use Util\RoutesUtil;
 use Validator\RequestValidator;
 
+header("Access-Control-Allow-Origin: http://localhost:3000");
+
 require_once "bootstrap.php";
 
 try{
