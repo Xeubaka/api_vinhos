@@ -35,7 +35,7 @@ Class RequestValidator
     private function _rerouteRequest()
     {
         if ($this->_request['method'] !== self::GET && $this->_request['method'] !== self::DELETE) {
-            $this->requestData = JsonUtil::prepareRequestBodyJson();
+            $this->_requestData = JsonUtil::prepareRequestBodyJson();
         }
         $method = '_' . $this->_request['method'];
         return $this->$method();
