@@ -1,9 +1,6 @@
 ## Ambiente 💻
   - Servidor Local: [Spring Boot 2.6.3](https://spring.io/projects/spring-boot)🔗
      
-### Explicaçao
-   - RewriteEngine, facilita a modelagem de URL’s, possibilitando gerenciar melhor as rotas da api (Config: .htaccess; Conceito: RequestValidator.php && RotasUtil.php)
-
 ### Configuração (Testado em ambiente Windows)
    - Baixar a branch
    - (para o proximo comando é necessário ter docker instalado e rodando)
