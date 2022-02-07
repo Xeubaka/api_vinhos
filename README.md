@@ -1,54 +1,53 @@
 ## Ambiente 💻
-  - Servidor Local: [Xampp 8.0.3](https://www.apachefriends.org/pt_br/download.html)🔗
-
-## RewriteEngine 🔧
+  - Servidor Local: [Spring Boot 2.6.3](https://spring.io/projects/spring-boot)🔗
      
 ### Explicaçao
    - RewriteEngine, facilita a modelagem de URL’s, possibilitando gerenciar melhor as rotas da api (Config: .htaccess; Conceito: RequestValidator.php && RotasUtil.php)
 
-### Configuração
-   - abrir arquivo "HTTPD.conf" do Apache 
-        ```
-          C:\xampp\apache\conf\httpd.conf
-        ```
-   - descomentar a linha "LoadModule rewrite_module modules/mod_rewrite.so" (remover o '#')
-   - Alterar "AllowOverride none" para "AllowOverride All"
-   - reiniciar o Apache
-   - para verificar se funcionou entrar com uma url aleatoria, deve retornar um JSON com mensagem: ``` { "tipo":"erro","resposta":"Recurso inexistente!" } ```
+### Configuração (Testado em ambiente Windows)
+   - Baixar a branch
+   - (para o proximo comando é necessário ter docker instalado e rodando)
+   - Na pasta da api executar o comando ``` & .\mvnw.cmd clean package -f .\pom.xml ``` (irá gerar o executavel e criar a imagem docker da api)
+   - Ao final da execução anterior basta executar ``` docker-compose up ```
 
 ## Banco de Dados 🎲
-   - Para criar o Banco de dados basta importar o arquivo 
-        ``` script_banco.sql ```
+   - Optei pelo H2, que salva em memoria enquanto roda a aplicação.
 
 ## Api 👾
-   - GET (api_vinhos/wines/list/:id)
-       - Retorna todos registros, caso informe o :id irá retornar o registro com esse :id
-   - POST (api_vinhos/wines/insert)
-       - Insere novos registros na tabela, necessário informar todos os campos:
+   - GET (localhost:8080/vehicles)
+       - Retorna lista de todos registros de veiculos cadastrados.
+   - GET (localhost:8080/vehicle/{id})
+       - Retorna o veiculo referente ao id informado.
+   - POST (localhost:8080/vehicle)
+       - Insere um novo veiculo, necessário informar todos os campos:
             |Campo|Tipo|Exemplo|
             |:------:|:-----------:|:---------:|
-            |name|Varchar(24)|Periquita|
-            |type|Varchar(10)|Tinto|
-            |weight|Decimal|1.200|
+            |name|String|Luis|
+            |model|String|Palio|
+            |dtFab|String|"01/01/2003"|
+            |kmCity|Long|9|
+            |kmRoad|Long|10|
        - Json:
           ```
          {
-            "name": "Periquita",
-            "type": "Tinto",
-            "weight": 1.200
+            "name": "Luis",
+            "modedl": "Palio",
+            "dtFab": "01/01/2003",
+            "kmCity": 9,
+            "kmRoad": 10
           }
           ```
-   - PUT (api_vinhos/wines/update/id)
-        - Atualiza registro, :id obrigatório
-        - Atualiza somente os campos informados, não sendo necessário informar todos campos
-   - DELETE (api_vinhos/wines/delete/id)
+   - PUT (localhost:8080/vehicle/{id})
+        - Atualiza registro referente ao id.
+        - Necessário informar todos os campos.
+   - DELETE (localhost:8080/vehicle/{id})
         - Deleta registro por :id
-   - NO_EXIST 
-        - Links que não tem função retornam: ``` { "tipo":"erro","resposta":"Recurso inexistente!" } ```
 
 ## Minha experiência com esse estudo
 
-Desenvolver uma api em php, mesmo após certo tempo enferrujado com a linguagem, foi certamente uma experiência divertida, o que me fascina em programação é que não importa a linguagem, pois lógica sempre será uma constante, o divertido é ver como essa lógica se submete aos conceitos e parâmetros de cada linguagem, por fim, desenvolver não é sobre a linguagem utilizada, mas sim quais conceitos e parâmetros você se dispõe a utilizar.
+Não cheguei a trabalhar com java ou spring boot a nivel profissional anteriormente, mas gostei bastante da facilidade e interatividade que a tecnologia proporciona, certamente estudarei mais sobre no futuro.
+
+O que me fascina em programação é que não importa a linguagem, pois lógica sempre será uma constante, o divertido é ver como essa lógica se submete aos conceitos e parâmetros de cada linguagem, por fim, desenvolver não é sobre a linguagem utilizada, mas sim quais conceitos e parâmetros você se dispõe a utilizar.
 
 
 ## Gratidão fml 🙏
